@@ -1,4 +1,6 @@
 .idea
+dist
+build
 node_modules
 jspm_packages
 npm-debug.log
