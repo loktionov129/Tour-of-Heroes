@@ -18,7 +18,7 @@ import { Hero } from '../../_hero';
 @Component({
     selector: 'hero-search',
     templateUrl: './hero-search.component.html',
-    styleUrls: [ './hero-search.component.css' ],
+    styles: [require('./hero-search.component.scss').toString()],
     providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {
