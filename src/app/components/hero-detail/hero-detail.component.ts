@@ -35,11 +35,10 @@ export class HeroDetailComponent implements OnInit {
         this.location.back();
     }
 
-    handleName(): void {
-        if (!this.hero.name) {
-            this.hero.name = this.previousName;
-        } else {
-            this.previousName = this.hero.name;
-        }
+    save(): void {
+        if (this.hero.name)
+            this.heroService.update(this.hero).then(() => this.goBack());
+        else
+            alert("Name is required!");
     }
 }

@@ -22,4 +22,18 @@ export class HeroesComponent implements OnInit  {
             .then(heroes => this.heroes = heroes)
             .catch(err => console.log(err.msg || err));
     }
+
+    add(name: string): void {
+        name = name.trim();
+        if (!name)
+            return;
+
+        this.heroService.create(name)
+            .then(hero => this.heroes.push(hero));
+    }
+
+    delete(hero: Hero): void {
+        this.heroService.delete(hero.id)
+            .then(() => this.heroes = this.heroes.filter(h => h !== hero));
+    }
 }

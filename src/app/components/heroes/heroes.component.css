@@ -50,3 +50,14 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
 }
+
+button.delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 5px;
+  margin-right: .8em;
+  background-color: gray !important;
+  color: white;
+  cursor: pointer;
+}
