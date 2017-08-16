@@ -5,15 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './services/in-memory-data/in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data';
 
-import { HeroService } from './services/hero/hero.service';
+import { HeroService } from './services/hero/';
 
-import { AppComponent } from './components/app/app.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HeroSearchComponent } from './components/hero-search/hero-search.component';
-import { HeroesComponent } from './components/heroes/heroes.component';
-import { HeroDetailComponent }  from './components/hero-detail/hero-detail.component';
+import { AppComponent } from './components/app';
+import { DashboardComponent } from './components/dashboard';
+import { HeroSearchComponent } from './components/hero-search';
+import { HeroesComponent } from './components/heroes';
+import { HeroDetailComponent }  from './components/hero-detail';
 
 @NgModule({
   imports: [
