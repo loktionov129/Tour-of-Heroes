@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
-import { Hero }              from '../../_hero';
-import { HeroService }       from '../../services/hero/hero.service';
+import { Router } from '@angular/router';
+import { Hero } from '../../_hero';
+import { HeroService } from '../../services/hero/hero.service';
 
 @Component({
     selector: 'my-heroes',
@@ -9,30 +9,31 @@ import { HeroService }       from '../../services/hero/hero.service';
     styles: [require('./heroes.component.scss').toString()]
 })
 export class HeroesComponent implements OnInit  {
-    heroes: Array<Hero>;
+    public heroes: Hero[];
 
     constructor(
         private heroService: HeroService,
         private router: Router
     ) {}
 
-    ngOnInit() {
+    public ngOnInit() {
         this.heroService.getHeroes()
-            .then(heroes => this.heroes = heroes)
-            .catch(err => console.log(err.msg || err));
+            .then((heroes) => this.heroes = heroes)
+            .catch((err) => console.log(err.msg || err));
     }
 
-    add(name: string): void {
+    public add(name: string): void {
         name = name.trim();
-        if (!name)
+        if (!name) {
             return;
+        }
 
         this.heroService.create(name)
-            .then(hero => this.heroes.push(hero));
+            .then((hero) => this.heroes.push(hero));
     }
 
-    delete(hero: Hero): void {
-        this.heroService.delete(hero.id)
-            .then(() => this.heroes = this.heroes.filter(h => h !== hero));
+    public remove(hero: Hero): void {
+        this.heroService.remove(hero.id)
+            .then(() => this.heroes = this.heroes.filter((h) => h !== hero));
     }
 }

@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Location }                 from '@angular/common';
+import { Location } from '@angular/common';
 
-import { Hero }                     from '../../_hero';
-import { HeroService }              from '../../services/hero/hero.service';
+import { Hero } from '../../_hero';
+import { HeroService } from '../../services/hero/hero.service';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -13,8 +13,8 @@ import 'rxjs/add/operator/switchMap';
     styles: [require('./hero-detail.component.scss').toString()]
 })
 export class HeroDetailComponent implements OnInit {
-    hero: Hero;
-    previousName: string;
+    public hero: Hero;
+    public previousName: string;
 
     constructor(
         private heroService: HeroService,
@@ -22,7 +22,7 @@ export class HeroDetailComponent implements OnInit {
         private location: Location
     ) {}
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.route.paramMap
             .switchMap((params: ParamMap) => this.heroService.getHero(+params.get('id')))
             .subscribe((hero: Hero) => {
@@ -31,14 +31,15 @@ export class HeroDetailComponent implements OnInit {
             });
     }
 
-    goBack(): void {
+    private goBack(): void {
         this.location.back();
     }
 
-    save(): void {
-        if (this.hero.name)
+    private save(): void {
+        if (this.hero.name) {
             this.heroService.update(this.hero).then(() => this.goBack());
-        else
-            alert("Name is required!");
+        } else {
+            alert('Name is required!');
+        }
     }
 }

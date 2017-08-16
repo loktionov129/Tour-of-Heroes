@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
     styles: [require('./app.component.scss').toString()]
 })
 export class AppComponent {
-    title = 'Tour of Heroes';
+    public title = 'Tour of Heroes';
 }
