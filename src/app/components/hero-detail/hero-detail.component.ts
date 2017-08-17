@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -12,9 +12,10 @@ import 'rxjs/add/operator/switchMap';
     templateUrl: './hero-detail.component.html',
     styles: [require('./hero-detail.component.scss').toString()]
 })
-export class HeroDetailComponent implements OnInit {
+export class HeroDetailComponent implements OnInit, OnDestroy {
     public hero: Hero;
     public previousName: string;
+    private data$: any;
 
     constructor(
         private heroService: HeroService,
@@ -23,12 +24,13 @@ export class HeroDetailComponent implements OnInit {
     ) {}
 
     public ngOnInit(): void {
-        this.route.paramMap
+        this.data$ = this.route.paramMap
             .switchMap((params: ParamMap) => this.heroService.getHero(+params.get('id')))
-            .subscribe((hero: Hero) => {
-                this.hero = hero;
-                this.previousName = hero.name;
-            });
+            .subscribe((hero: Hero) => this.hero = hero);
+    }
+
+    public ngOnDestroy(): void {
+        this.data$.unsubscribe();
     }
 
     private goBack(): void {

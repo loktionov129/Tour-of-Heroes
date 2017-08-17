@@ -16,23 +16,23 @@ import { HeroesComponent } from './components/heroes';
 import { HeroDetailComponent }  from './components/hero-detail';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule
-  ],
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    HeroSearchComponent,
-    HeroDetailComponent,
-    HeroesComponent
-  ],
-  providers: [
-    HeroService
-  ],
-  bootstrap: [ AppComponent ]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        InMemoryWebApiModule.forRoot(InMemoryDataService),
+        AppRoutingModule
+    ],
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        HeroSearchComponent,
+        HeroDetailComponent,
+        HeroesComponent
+    ],
+    providers: [
+        HeroService
+    ],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }
