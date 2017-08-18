@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Hero } from '../../shared/hero';
-import { HeroService } from '../../services/hero/';
+import { Hero } from '../hero';
+import { HeroService } from '../services/hero/';
 
 @Component({
   selector: 'my-dashboard',

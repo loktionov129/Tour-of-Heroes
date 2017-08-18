@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Hero } from '../../shared/hero';
+import { Hero } from '../../hero';
 
 @Injectable()
 export class HeroSearchService {
@@ -14,6 +14,6 @@ export class HeroSearchService {
     public search(term: string): Observable<Hero[]> {
         return this.http
             .get(`api/heroes/?name=${term}`)
-            .map(response => response.json().data as Hero[]);
+            .map((response) => response.json().data as Hero[]);
     }
 }

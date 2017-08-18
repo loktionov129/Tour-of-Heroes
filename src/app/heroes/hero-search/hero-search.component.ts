@@ -12,8 +12,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { Hero } from '../../shared/hero';
-import { HeroSearchService } from '../../services/hero-search/';
+import { Hero } from '../hero';
+import { HeroSearchService } from '../services/hero-search/';
 
 @Component({
   selector: 'my-hero-search',

@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Hero } from '../../shared/hero';
+import { Hero } from '../../hero';
 
 @Injectable()
 export class HeroService {
@@ -16,7 +16,7 @@ export class HeroService {
         return this.http
             .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
             .toPromise()
-            .then(res => res.json().data as Hero)
+            .then((res) => res.json().data as Hero)
             .catch(this.handleError);
     }
 
@@ -31,7 +31,7 @@ export class HeroService {
         const url = `${this.heroesUrl}/${id}`;
         return this.http.get(url)
             .toPromise()
-            .then(response => response.json().data as Hero)
+            .then((response) => response.json().data as Hero)
             .catch(this.handleError);
     }
 
