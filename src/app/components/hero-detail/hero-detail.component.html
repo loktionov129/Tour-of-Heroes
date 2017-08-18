@@ -1,16 +1,16 @@
 <div *ngIf="hero">
-    <h2>{{hero.name || 'unnamed'}} details!</h2>
-    <div>
-        <label>id: </label>{{hero.id}}
-    </div>
-    <div>
-        <form (ngSubmit)="save()" #heroForm="ngForm">
-        <label>name: </label>
-        <input name="name" required placeholder="name" [(ngModel)]="hero.name" />
-        <p>
-            <button (click)="goBack()">Back</button>
-            <button type="submit" [disabled]="heroForm.form.invalid">Save</button>
-        </p>
-        </form>
-    </div>
+  <h2>{{hero.name || 'unnamed'}} details!</h2>
+  <div>
+    <label>id: </label>{{hero.id}}
+  </div>
+  <div>
+    <form (ngSubmit)="save()" #heroForm="ngForm">
+      <label>name: </label>
+      <input name="name" required placeholder="name" [(ngModel)]="hero.name" />
+      <p>
+        <button (click)="goBack()">Back</button>
+        <button type="submit" [disabled]="heroForm.form.invalid">Save</button>
+      </p>
+    </form>
+  </div>
 </div>
