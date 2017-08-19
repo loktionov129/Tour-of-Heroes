@@ -32,11 +32,11 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
     this.data$.unsubscribe();
   }
 
-  private goBack(): void {
+  public goBack(): void {
     this.location.back();
   }
 
-  private save(): void {
+  public save(): void {
     if (this.hero.name) {
       this.heroService.update(this.hero).then(() => this.goBack());
     } else {
