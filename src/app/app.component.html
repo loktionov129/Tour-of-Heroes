@@ -1,6 +1,10 @@
 <nav>
-  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-  <a routerLink="/heroes" routerLinkActive="active">Tour Of Heroes</a>
-  <a routerLink="/todo" routerLinkActive="active">TODO List</a>
+  <a md-raised-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+  <a md-raised-button [mdMenuTriggerFor]="menu" routerLink="/heroes/" routerLinkActive="active">Tour Of Heroes</a>
+  <md-menu #menu="mdMenu">
+    <a md-menu-item routerLink="/heroes/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
+    <a md-menu-item routerLink="/heroes/list" routerLinkActive="active">Heroes List</a>
+  </md-menu>
+  <a md-raised-button routerLink="/todo" routerLinkActive="active">TODO List</a>
 </nav>
 <router-outlet></router-outlet>

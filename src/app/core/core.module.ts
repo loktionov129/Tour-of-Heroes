@@ -1,8 +1,15 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MdButtonModule, MdMenuModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [ CommonModule ]
+  imports: [
+    CommonModule,
+    BrowserAnimationsModule,
+    MdButtonModule
+  ],
+  exports: [ MdButtonModule, MdMenuModule ]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
