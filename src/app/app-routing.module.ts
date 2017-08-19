@@ -1,16 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-export const routes: Routes = [
-  { path: 'heroes', loadChildren: 'app/heroes/heroes.module#HeroesModule' },
-  { path: 'todo', loadChildren: 'app/todo/todo.module#TodoModule' },
-  { path: 'home', loadChildren: 'app/home/home.module#HomeModule' },
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
-  { path: '**', redirectTo: '/home'},
-];
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './routes';
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(ROUTES)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
