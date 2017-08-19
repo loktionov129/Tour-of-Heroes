@@ -1,4 +1,5 @@
 <div>
-  <input type="checkbox" name="completed" [checked]="todo.completed" (click)="toggle()">
+  <md-checkbox color="primary" [checked]="todo.completed" (click)="toggle();cb.checked=false" #cb></md-checkbox>
   <span [ngStyle]="{color: todo.completed ? 'grey' : 'black'}">{{todo.title}}</span>
+  <i class="material-icons delete" (click)="remove()"></i>
 </div>

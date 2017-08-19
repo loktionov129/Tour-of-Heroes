@@ -1,3 +1,5 @@
 <ng-container *ngIf="todos.length">
   <my-todo-item *ngFor="let todo of todos" [todo]="todo"></my-todo-item>
+  <button md-raised-button (click)="toggleAll();">toggleAll();</button>
+  <button md-raised-button (click)="removeCompleted();">removeCompleted();</button>
 </ng-container>

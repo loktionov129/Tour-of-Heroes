@@ -33,7 +33,9 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   }
 
   public goBack(): void {
+    console.log('before location.back');
     this.location.back();
+    console.log('after location.back');
   }
 
   public save(): void {

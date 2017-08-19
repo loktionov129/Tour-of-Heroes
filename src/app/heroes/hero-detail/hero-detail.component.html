@@ -5,11 +5,12 @@
   </div>
   <div>
     <form (ngSubmit)="save()" #heroForm="ngForm">
-      <label>name: </label>
-      <input name="name" required placeholder="name" [(ngModel)]="hero.name" />
+      <md-input-container>
+        <input name="name" required placeholder="name" autocomplete="off" mdInput [(ngModel)]="hero.name" />
+      </md-input-container>
       <p>
-        <button (click)="goBack()">Back</button>
-        <button type="submit" [disabled]="heroForm.form.invalid">Save</button>
+        <button md-raised-button (click)="goBack()">Back</button>
+        <button type="submit" [disabled]="heroForm.form.invalid" md-raised-button>Save</button>
       </p>
     </form>
   </div>

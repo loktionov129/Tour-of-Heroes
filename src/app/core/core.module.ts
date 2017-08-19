@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    MdButtonModule
+    MdMenuModule
   ],
   exports: [ MdButtonModule, MdMenuModule ]
 })

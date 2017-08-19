@@ -1,0 +1,19 @@
+div:hover .material-icons.delete {
+  opacity: 1;
+}
+
+.material-icons.delete {
+  position: relative;
+  top: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .3s;
+
+  &:before {
+    content: 'delete';
+  }
+
+  &:hover:before {
+    content: 'delete_forever';
+  }
+}

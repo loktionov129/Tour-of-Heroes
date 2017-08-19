@@ -9,8 +9,12 @@ import { TodoService } from '../services/todo.service';
 })
 export class TodoItemComponent {
   @Input() public todo: Todo;
+  public checked: boolean;
 
   constructor(private todoService: TodoService) {}
+  public remove(): void {
+    this.todoService.remove(this.todo);
+  }
 
   public toggle(): void {
     this.todoService.toggle(this.todo);
