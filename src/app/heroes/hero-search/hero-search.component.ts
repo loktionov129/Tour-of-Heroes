@@ -13,7 +13,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import { Hero } from '../hero';
-import { HeroSearchService } from '../services/hero-search/';
+import { HeroSearchService } from '../services';
 
 @Component({
   selector: 'my-hero-search',

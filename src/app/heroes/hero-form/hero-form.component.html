@@ -1,0 +1,7 @@
+<form #heroForm="ngForm" (ngSubmit)="create(heroName.value);heroForm.reset();">
+  <label>
+    Hero name:
+    <input type="text" name="name" required="" autocomplete="off" #heroName [(ngModel)]="name">
+  </label>
+  <button type="submit" [disabled]="heroForm.form.invalid">Add</button>
+</form>

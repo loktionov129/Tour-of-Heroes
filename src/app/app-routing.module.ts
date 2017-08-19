@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'heroes', pathMatch: 'full'},
   { path: 'heroes', loadChildren: 'app/heroes/heroes.module#HeroesModule' },
-  { path: '**', redirectTo: 'heroes'},
+  { path: 'todo', loadChildren: 'app/todo/todo.module#TodoModule' },
+  { path: 'home', loadChildren: 'app/home/home.module#HomeModule' },
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '**', redirectTo: '/home'},
 ];
 
 @NgModule({

@@ -1,5 +1,9 @@
 # Angular2
 
+## [Demo online](https://loktionov129.github.io/angular2/dist "Demo online")
+
+[![observable-service-data-flow](https://coryrylan.com/assets/images/posts/2015-11-17-angular-observable-data-services/observable-service-data-flow.svg)](https://coryrylan.com/assets/images/posts/2015-11-17-angular-observable-data-services/observable-service-data-flow.svg)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
 
 ## Development server

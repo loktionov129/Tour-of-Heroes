@@ -1,0 +1,4 @@
+<div>
+  <input type="checkbox" name="completed" [checked]="todo.completed" (click)="toggle()">
+  <span [ngStyle]="{color: todo.completed ? 'grey' : 'black'}">{{todo.title}}</span>
+</div>

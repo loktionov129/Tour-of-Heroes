@@ -1,10 +1,5 @@
 <h2>My Heroes</h2>
-<div>
-  <label>Hero name:</label> <input #heroName />
-  <button (click)="add(heroName.value); heroName.value=''">
-    Add
-  </button>
-</div>
+<my-hero-form (add)="onAdd($event)"></my-hero-form>
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
     <a class="gotoDetails" [routerLink]="['/heroes/detail/', hero.id]">

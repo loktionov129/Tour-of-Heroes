@@ -1,35 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Hero } from '../hero';
-import { HeroService } from '../services/hero/';
+import { HeroService } from '../services';
 
 @Component({
   selector: 'my-hero-list',
   templateUrl: './hero-list.component.html',
   styleUrls: ['./hero-list.component.scss']
 })
-export class HeroListComponent implements OnInit  {
+export class HeroListComponent implements OnInit, OnDestroy  {
   public heroes: Hero[];
+  private subscription;
 
   constructor(
-    private heroService: HeroService,
-    private router: Router
+    private heroService: HeroService
   ) {}
 
   public ngOnInit() {
-    this.heroService.getHeroes()
-      .then((heroes) => this.heroes = heroes)
-      .catch((err) => console.log(err.msg || err));
+    this.subscription = this.heroService.getHeroes()
+      .subscribe((heroes) => this.heroes = heroes);
   }
 
-  public add(name: string): void {
-    name = name.trim();
-    if (!name) {
-      return;
-    }
+  public ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
-    this.heroService.create(name)
-      .then((hero) => this.heroes.push(hero));
+  public onAdd(hero: Hero): void {
+    this.heroes.push(hero);
   }
 
   public remove(hero: Hero): void {
