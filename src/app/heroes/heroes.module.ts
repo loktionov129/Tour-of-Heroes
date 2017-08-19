@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+import { ExitHeroGuard } from './hero-detail/hero-detail.guard';
 
 /*import { StoreModule } from '@ngrx/store';
 import { heroesReducer } from './store/heroes.store';*/
@@ -27,6 +28,6 @@ import { HeroDetailComponent } from './hero-detail';
     HeroMainComponent, DashboardComponent, HeroFormComponent,
     HeroListComponent, HeroSearchComponent, HeroDetailComponent
   ],
-  providers: [ HeroService ]
+  providers: [ HeroService, ExitHeroGuard ]
 })
 export class HeroesModule { }

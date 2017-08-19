@@ -4,7 +4,8 @@ import { Location } from '@angular/common';
 
 import { Hero } from '../hero';
 import { HeroService } from '../services';
-
+import { ComponentCanDeactivate } from './hero-detail.guard';
+import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -12,7 +13,7 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.scss']
 })
-export class HeroDetailComponent implements OnInit, OnDestroy {
+export class HeroDetailComponent implements OnInit, OnDestroy, ComponentCanDeactivate {
   public hero: Hero;
   private data$: any;
 
@@ -21,6 +22,15 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private location: Location
   ) {}
+
+  public canDeactivate(): boolean | Observable<boolean> {
+
+    if (this.hero.name) {
+      return true;
+    } else {
+      return confirm('Вы хотите покинуть страницу?');
+    }
+  }
 
   public ngOnInit(): void {
     this.data$ = this.route.paramMap
@@ -35,14 +45,12 @@ export class HeroDetailComponent implements OnInit, OnDestroy {
   public goBack(): void {
     console.log('before location.back');
     this.location.back();
-    console.log('after location.back');
+    console.log('location.back');
   }
 
   public save(): void {
     if (this.hero.name) {
       this.heroService.update(this.hero).then(() => this.goBack());
-    } else {
-      alert('Name is required!');
     }
   }
 }
