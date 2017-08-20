@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { HeroMainComponent } from './hero-main';
-import { HeroListComponent } from './hero-list/';
-import { HeroDetailComponent } from './hero-detail/';
-import { DashboardComponent } from './dashboard';
+import {
+  HeroMainComponent, DashboardComponent, HeroListComponent,
+  HeroDetailComponent
+} from './index';
 import { ExitHeroGuard } from './hero-detail/hero-detail.guard';
 
 export const ROUTES: Routes = [{

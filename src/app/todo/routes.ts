@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { TodoMainComponent } from './todo-main';
+import { TodoMainComponent } from './index';
 
 export const ROUTES: Routes = [{
   path: '',

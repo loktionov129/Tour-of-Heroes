@@ -9,12 +9,10 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { HeroService, InMemoryDataService } from './services';
-import { HeroMainComponent } from './hero-main';
-import { DashboardComponent } from './dashboard';
-import { HeroListComponent } from './hero-list';
-import { HeroFormComponent } from './hero-form';
-import { HeroSearchComponent } from './hero-search';
-import { HeroDetailComponent } from './hero-detail';
+import {
+  HeroMainComponent, DashboardComponent, HeroListComponent,
+  HeroFormComponent, HeroSearchComponent, HeroDetailComponent
+} from './index';
 
 @NgModule({
   imports: [
