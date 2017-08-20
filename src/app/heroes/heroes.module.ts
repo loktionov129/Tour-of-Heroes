@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
+import { MdCardModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 import { ExitHeroGuard } from './hero-detail/hero-detail.guard';
-
 /*import { StoreModule } from '@ngrx/store';
 import { heroesReducer } from './store/heroes.store';*/
 import { HttpModule } from '@angular/http';
@@ -21,6 +21,7 @@ import { HeroDetailComponent } from './hero-detail';
     SharedModule,
     HeroesRoutingModule,
     HttpModule,
+    MdCardModule,
     /*StoreModule.forRoot({ heroes: heroesReducer }),*/
     InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],

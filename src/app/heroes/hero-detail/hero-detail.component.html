@@ -1,4 +1,20 @@
 <div *ngIf="hero">
+  <md-card class="example-card">
+    <md-card-header>
+      <div md-card-avatar class="example-header-image" [style.backgroundImage]="'url('+hero.image+')'"></div>
+      <md-card-title>{{hero.name}}</md-card-title>
+      <md-card-subtitle>{{hero.realname}}</md-card-subtitle>
+    </md-card-header>
+    <img md-card-image [src]="hero.imagedetail">
+    <md-card-content>
+      <p>{{hero.powers}}</p>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>LIKE</button>
+      <button md-button>SHARE</button>
+    </md-card-actions>
+  </md-card>
+
   <h2>{{hero.name || 'unnamed'}} details!</h2>
   <div>
     <label>id: </label>{{hero.id}}
