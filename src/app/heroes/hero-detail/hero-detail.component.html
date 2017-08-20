@@ -10,24 +10,24 @@
       <p>{{hero.powers}}</p>
     </md-card-content>
     <md-card-actions>
-      <button md-button>LIKE</button>
-      <button md-button>SHARE</button>
+      <button md-button (click)="goBack()">BACK</button>
+      <button md-button (click)="edit()">EDIT</button>
     </md-card-actions>
   </md-card>
-
-  <h2>{{hero.name || 'unnamed'}} details!</h2>
-  <div>
-    <label>id: </label>{{hero.id}}
-  </div>
-  <div>
-    <form (ngSubmit)="save()" #heroForm="ngForm">
-      <md-input-container>
-        <input name="name" required placeholder="name" autocomplete="off" mdInput [(ngModel)]="hero.name" />
-      </md-input-container>
-      <p>
-        <button md-raised-button (click)="goBack()">Back</button>
-        <button type="submit" [disabled]="heroForm.form.invalid" md-raised-button>Save</button>
-      </p>
-    </form>
+  <div class="sidebar" *ngIf="sidebar">
+    <h2>{{hero.name || 'unnamed'}} details!</h2>
+    <div>
+      <label>id: </label>{{hero.id}}
+    </div>
+    <div>
+      <form (ngSubmit)="save()" #heroForm="ngForm">
+        <md-input-container>
+          <input name="name" required placeholder="name" autocomplete="off" mdInput [(ngModel)]="hero.name" />
+        </md-input-container>
+        <p>
+          <button type="submit" [disabled]="heroForm.form.invalid" md-raised-button>Save</button>
+        </p>
+      </form>
+    </div>
   </div>
 </div>

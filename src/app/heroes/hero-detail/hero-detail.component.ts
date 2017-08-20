@@ -15,6 +15,7 @@ import 'rxjs/add/operator/switchMap';
 })
 export class HeroDetailComponent implements OnInit, OnDestroy, ComponentCanDeactivate {
   public hero: Hero;
+  public sidebar = false;
   private data$: any;
 
   constructor(
@@ -41,6 +42,11 @@ export class HeroDetailComponent implements OnInit, OnDestroy, ComponentCanDeact
 
   public ngOnDestroy(): void {
     this.data$.unsubscribe();
+  }
+
+  public edit(): void {
+    console.log('EDIT');
+    this.sidebar = !this.sidebar;
   }
 
   public goBack(): void {

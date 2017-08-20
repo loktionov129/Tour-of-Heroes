@@ -1,14 +1,68 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
   <meta charset="utf-8">
-  <title>Angular2</title>
-  <base href="/">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Angular2</title>
+  <meta name="description" content="Angular2 Webpack Starter by @gdi2290 from @AngularClass" />
+  <meta name="keywords" content="Angular2, Webpack, Starter by @gdi2290 from @AngularClass" />
+  <meta name="author" content="@gdi2290 from @AngularClass"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/assets/indigo-pink.css" rel="stylesheet" type="text/css">
+  <style>
+    body {
+      background-color: rgba(34, 34, 34, 0.16);
+    }
+
+    .mat-raised-button.active:not([disabled]), .mat-menu-item.active {
+      box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+
+    .mat-raised-button:not([disabled]).active .mat-button-ripple.mat-ripple, .mat-menu-item.active .mat-menu-ripple.mat-ripple {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .mat-menu-content {
+      padding: 0 !important;
+    }
+
+  </style>
+  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
+  <!-- base url -->
+  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+  <% if (webpackConfig.htmlElements.headTags) { %>
+  <!-- Configured Head Tags  -->
+  <%= webpackConfig.htmlElements.headTags %>
+  <% } %>
+
+
+  <%= htmlWebpackPlugin.files.webpackManifest %>
+
+  <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+  <!-- Webpack Dev Server reload -->
+  <script src="/webpack-dev-server.js"></script>
+  <% } %>
+
+  <!-- Async Google Analytics: change UA-71073175-1 to be your site's ID -->
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-71073175-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
+  <!-- CSS will be injected by webpack here -->
+  <!-- Preload link tags will be injected by webpack here -->
+
 </head>
+
 <body>
-  <my-root></my-root>
+
+  <my-root>
+    Loading...
+  </my-root>
+
+  <!-- Scripts will be injected by webpack here -->
 </body>
 </html>
