@@ -2,7 +2,7 @@
   <md-card class="example-card">
     <md-card-header>
       <div md-card-avatar class="example-header-image" [style.backgroundImage]="'url('+hero.image+')'"></div>
-      <md-card-title>{{hero.name}}</md-card-title>
+      <md-card-title>{{hero.name || 'unnamed'}}</md-card-title>
       <md-card-subtitle>{{hero.realname}}</md-card-subtitle>
     </md-card-header>
     <img md-card-image [src]="hero.imagedetail">
@@ -11,23 +11,37 @@
     </md-card-content>
     <md-card-actions>
       <button md-button (click)="goBack()">BACK</button>
-      <button md-button (click)="edit()">EDIT</button>
+      <button md-button (click)="sidebar = true;">EDIT</button>
     </md-card-actions>
   </md-card>
-  <div class="sidebar" *ngIf="sidebar">
-    <h2>{{hero.name || 'unnamed'}} details!</h2>
-    <div>
-      <label>id: </label>{{hero.id}}
-    </div>
-    <div>
-      <form (ngSubmit)="save()" #heroForm="ngForm">
-        <md-input-container>
-          <input name="name" required placeholder="name" autocomplete="off" mdInput [(ngModel)]="hero.name" />
-        </md-input-container>
-        <p>
-          <button type="submit" [disabled]="heroForm.form.invalid" md-raised-button>Save</button>
-        </p>
-      </form>
-    </div>
+
+  <div [ngClass]="{sidebar: sidebar}">
+    <form (ngSubmit)="save()" #heroForm="ngForm" [@myAnimation] *ngIf="sidebar">
+      <h2>Edit Hero</h2>
+      <md-input-container>
+        <input name="name" required placeholder="Name" autocomplete="off" mdInput [(ngModel)]="hero.name" />
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <input name="realname" required placeholder="Real name" autocomplete="off" mdInput [(ngModel)]="hero.realname" />
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <textarea name="powers" required placeholder="Powers" autocomplete="off" mdInput [(ngModel)]="hero.powers"></textarea>
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <input name="image" required placeholder="Photo" autocomplete="off" mdInput [(ngModel)]="hero.image" />
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <input name="image__detail" required placeholder="Detail photo" autocomplete="off" mdInput [(ngModel)]="hero.imagedetail" />
+      </md-input-container>
+      <br>
+      <p>
+        <button md-raised-button (click)="sidebar=false">CANCEL</button>
+        <button type="submit" [disabled]="heroForm.form.invalid" md-raised-button>SAVE</button>
+      </p>
+    </form>
   </div>
 </div>
