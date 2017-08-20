@@ -1,15 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import 'rxjs/add/operator/take';
-
+import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
+import { slideAnimation } from './../../shared/animations';
 import { Hero } from '../hero';
 import { HeroService } from '../services';
 
 @Component({
   selector: 'my-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  animations: [ slideAnimation ]
 })
 export class DashboardComponent implements OnInit, OnDestroy {
+  @HostBinding('@routeAnimation') public routeAnimation = true;
+  @HostBinding('style.display')   public display = 'block';
+  @HostBinding('style.position')  public position = 'absolute';
   public heroes: Hero[];
   private subscription;
 

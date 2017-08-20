@@ -6,4 +6,4 @@ import { ROUTES } from './routes';
   imports: [RouterModule.forChild(ROUTES)],
   exports: [RouterModule]
 })
-export class TodoRoutingModule {}
+export class HomeRoutingModule {}

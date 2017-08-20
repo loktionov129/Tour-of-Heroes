@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
+import { slideAnimation } from './../../shared/animations';
 
 @Component({
   template: `
     <my-todo-form></my-todo-form>
-    <my-todo-list></my-todo-list>`
+    <my-todo-list></my-todo-list>`,
+  animations: [ slideAnimation ]
 })
-export class TodoMainComponent {}
+export class TodoMainComponent {
+  @HostBinding('@routeAnimation') public routeAnimation = true;
+  @HostBinding('style.display')   public display = 'block';
+  @HostBinding('style.position')  public position = 'absolute';
+}
