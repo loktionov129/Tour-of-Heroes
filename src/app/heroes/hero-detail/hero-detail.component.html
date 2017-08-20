@@ -16,7 +16,7 @@
   </md-card>
 
   <div [ngClass]="{sidebar: sidebar}">
-    <form (ngSubmit)="save()" #heroForm="ngForm" [@myAnimation] *ngIf="sidebar">
+    <form class="sidebar__form" (ngSubmit)="save()" #heroForm="ngForm" [@myAnimation] *ngIf="sidebar">
       <h2>Edit Hero</h2>
       <md-input-container>
         <input name="name" required placeholder="Name" autocomplete="off" mdInput [(ngModel)]="hero.name" />

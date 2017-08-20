@@ -19,9 +19,9 @@ export class HeroService {
 
   constructor(private http: Http/*, private store: Store<HeroState>*/) { }
 
-  public create(name: string): Promise<Hero> {
+  public create(hero: Hero): Promise<Hero> {
     return this.http
-      .post(this.heroesUrl, JSON.stringify({name}), {headers: this.headers})
+      .post(this.heroesUrl, JSON.stringify(hero), {headers: this.headers})
       .toPromise()
       .then((res) => res.json().data as Hero)
       .catch(this.handleError);

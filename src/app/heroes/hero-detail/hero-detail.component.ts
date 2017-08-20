@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { trigger, transition, style, animate, state } from '@angular/animations';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { Location } from '@angular/common';
 
 import { Hero } from '../hero';
@@ -26,9 +26,7 @@ import 'rxjs/add/operator/switchMap';
         transition(
           ':leave', [
             style({transform: 'translateX(0)', opacity: 1}),
-            animate('300ms', style({transform: 'translateX(100%)', opacity: 0}),
-
-          ]
+            animate('300ms', style({transform: 'translateX(100%)', opacity: 0}))]
         )]
     )
   ]

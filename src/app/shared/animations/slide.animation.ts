@@ -6,8 +6,8 @@ export const slideAnimation: AnimationEntryMetadata =
     state('*',
       style({
         opacity: 1,
-        transform: 'translateX(0)',
-        position: 'relative'
+        position: 'relative',
+        transform: 'none'
       })
     ),
     transition(':enter', [

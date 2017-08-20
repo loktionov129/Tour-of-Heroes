@@ -1,8 +1,31 @@
-<form #heroForm="ngForm" (ngSubmit)="create();heroForm.reset();">
-  <label>
+<button md-raised-button (click)="sidebar = true;">Add Hero</button>
+<div [ngClass]="{sidebar: sidebar}">
+  <form class="sidebar__form" (ngSubmit)="create();heroForm.reset();" #heroForm="ngForm" [@myAnimation] *ngIf="sidebar">
+    <h2>Edit Hero</h2>
     <md-input-container>
-      <input type="text" name="name" autocomplete="off" placeholder="Hero name..." mdInput [(ngModel)]="name" />
+      <input name="name" required placeholder="Name" autocomplete="off" mdInput [(ngModel)]="hero.name" />
     </md-input-container>
-  </label>
-  <button type="submit" [disabled]="!name" md-raised-button>Add</button>
-</form>
+    <br>
+    <md-input-container>
+      <input name="realname" placeholder="Real name" autocomplete="off" mdInput [(ngModel)]="hero.realname" />
+    </md-input-container>
+    <br>
+    <md-input-container>
+      <textarea name="powers" placeholder="Powers" autocomplete="off" mdInput [(ngModel)]="hero.powers"></textarea>
+    </md-input-container>
+    <br>
+    <md-input-container>
+      <input name="image" placeholder="Photo" autocomplete="off" mdInput [(ngModel)]="hero.image" />
+    </md-input-container>
+    <br>
+    <md-input-container>
+      <input name="image__detail" placeholder="Detail photo" autocomplete="off" mdInput [(ngModel)]="hero.imagedetail" />
+    </md-input-container>
+    <br>
+    <p>
+      <button md-raised-button (click)="sidebar=false">CANCEL</button>
+      <button type="submit" [disabled]="!hero.name" md-raised-button>SAVE</button>
+    </p>
+  </form>
+</div>
+
