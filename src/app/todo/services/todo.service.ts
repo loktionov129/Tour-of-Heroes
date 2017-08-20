@@ -4,7 +4,8 @@ import { Todo } from '../todo';
 const TODOS: Todo[] = [
   new Todo('Make Home'),
   new Todo('Create Heroes', true),
-  new Todo('Create Todo')
+  new Todo('Create Todo', true),
+  new Todo('Make About')
 ];
 
 @Injectable()
