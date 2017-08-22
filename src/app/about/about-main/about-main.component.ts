@@ -9,6 +9,7 @@ import { slideAnimation } from './../../shared/animations';
     <a md-raised-button routerLink="/about/more" routerLinkActive="active">MORE</a>
     <a md-raised-button routerLink="/about/ngrx" routerLinkActive="active">NGRX</a>
     <a md-raised-button routerLink="/about/router-resolve" routerLinkActive="active">ROUTER-RESOLVE</a>
+    <a md-raised-button routerLink="/about/reactive-forms" routerLinkActive="active">REACTIVE-FORMS</a>
     <h2>about-main.component.ts</h2>
     <router-outlet></router-outlet>
   `,

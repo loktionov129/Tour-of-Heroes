@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
 
 @Injectable()
-export class HeroService {
+export class HeroServiceForResolver {
 
   constructor(private http: Http) {}
 

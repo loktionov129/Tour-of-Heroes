@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Hero } from '../hero';
-import { HeroService } from '../services';
+import { HeroServiceForResolver } from '../services';
 
 @Component({
-  providers: [HeroService],
   selector: 'r-form',
   template: `<form (ngSubmit)="onAdd($event);" #heroForm="ngForm">
     <input name="name" [(ngModel)]="hero.name" placeholder="hero name">
@@ -13,7 +12,7 @@ import { HeroService } from '../services';
 export class RFormComponent {
   public hero: Hero = new Hero();
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroServiceForResolver) {}
 
   public onAdd(): void {
     console.log('send new hero', this.hero);

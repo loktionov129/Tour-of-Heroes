@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { HeroServiceForResolver } from './services';
+import { Hero } from './hero';
 
 @Injectable()
 export class InitialResolver implements Resolve<any> {
-  public resolve(route, state): Observable<any> | Promise<any> | any {
-    console.log(4222);
-    return 42;
+  constructor(private heroService: HeroServiceForResolver) {}
+
+  public resolve(route, state): Observable<Hero[]> | Promise<Hero[]> | any {
+    console.log('load heroes before load');
+    return this.heroService.getHeroes();
+    // return Observable.of<Hero[]>([]).delay(2000);
   }
 }

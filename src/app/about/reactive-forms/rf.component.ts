@@ -1,22 +1,16 @@
 import { Component, HostBinding } from '@angular/core';
 import { slideAnimation } from './../../shared/animations';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   template: `
-    <h3>router-resolver</h3>
-    <r-form></r-form>
-    <r-list></r-list>
+    <h3>reactive-forms</h3>
+    <rf-form></rf-form>
+    <rf-list></rf-list>
   `,
   animations: [ slideAnimation ]
 })
-export class RComponent {
+export class RFComponent {
   @HostBinding('@routeAnimation') public routeAnimation = true;
   @HostBinding('style.display')   public display = 'block';
   @HostBinding('style.position')  public position = 'absolute';
-
-  constructor(private route: ActivatedRoute) {
-    console.log(route.snapshot.data.initialData);
-  }
-
 }

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { InitialResolver } from './router-resolve/initial.resolver';
 import { AboutMainComponent, MainInner1Component,
-  MainInner2Component, NgrxComponent, RComponent } from './index';
+  MainInner2Component, NgrxComponent, RComponent, RFComponent } from './index';
 
 export const ROUTES: Routes = [{
   path: '',
@@ -22,5 +22,8 @@ export const ROUTES: Routes = [{
     resolve: {
       initialData: InitialResolver
     }
+  }, {
+    path: 'reactive-forms',
+    component: RFComponent
   }]
 }];

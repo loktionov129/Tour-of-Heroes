@@ -9,3 +9,7 @@ export * from './ngrx/ngrx-list';
 export * from './router-resolve/r.component';
 export * from './router-resolve/r-form';
 export * from './router-resolve/r-list';
+
+export * from './reactive-forms/rf.component';
+export * from './reactive-forms/rf-form';
+export * from './reactive-forms/rf-list';
