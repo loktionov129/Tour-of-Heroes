@@ -1,5 +1,6 @@
 import { Component, HostBinding } from '@angular/core';
 import { slideAnimation } from './../../shared/animations';
+
 @Component({
   template: `<h3>one more main-inner</h3>`,
   animations: [ slideAnimation ]
