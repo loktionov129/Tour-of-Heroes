@@ -1,7 +1,7 @@
 <button md-raised-button (click)="sidebar = true;">Add Hero</button>
 <div [ngClass]="{sidebar: sidebar}">
   <form class="sidebar__form" (ngSubmit)="create();heroForm.reset();" #heroForm="ngForm" [@myAnimation] *ngIf="sidebar">
-    <h2>Edit Hero</h2>
+    <h2>Add Hero</h2>
     <md-input-container>
       <input name="name" required placeholder="Name" autocomplete="off" mdInput [(ngModel)]="hero.name" />
     </md-input-container>
