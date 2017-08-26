@@ -1,7 +1,7 @@
 import { Component, Input, HostBinding } from '@angular/core';
-import { slideAnimation } from './../../shared/animations';
-import { Todo } from '../todo';
-import { TodoService } from '../services/todo.service';
+import { slideAnimation } from './../../../shared/animations';
+import { TodoService } from '../../services';
+import { Todo } from '../../models';
 
 @Component({
   selector: 'my-todo-item',

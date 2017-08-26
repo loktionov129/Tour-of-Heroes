@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '../todo';
+import { Todo } from '../models';
 
 const TODOS: Todo[] = [
   new Todo('Make Home'),

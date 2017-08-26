@@ -3,6 +3,6 @@ export const ROUTES: Routes = [
   { path: '', loadChildren: 'app/home/home.module#HomeModule', pathMatch: 'full' },
   { path: 'about', loadChildren: 'app/about/about.module#AboutModule' },
   { path: 'heroes', loadChildren: 'app/heroes/heroes.module#HeroesModule' },
-  { path: 'todo', loadChildren: 'app/todo/todo.module#TodoModule' },
+  { path: 'todo', loadChildren: 'app/todo/#TodoModule' },
   { path: '**', redirectTo: '/'},
 ];
