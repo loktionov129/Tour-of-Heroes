@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 
 /* Routing Module */
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './routes';
 
 @NgModule({
   imports: [
