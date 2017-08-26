@@ -4,8 +4,7 @@ import { TodoService } from '../../services';
 
 @Component({
   selector: 'my-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  templateUrl: './todo-list.component.html'
 })
 export class TodoListComponent implements OnInit {
   public todos: Todo[];

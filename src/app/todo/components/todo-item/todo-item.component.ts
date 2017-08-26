@@ -14,7 +14,6 @@ export class TodoItemComponent {
   @HostBinding('style.display')   public display = 'block';
   @HostBinding('style.position')  public position = 'absolute';
   @Input() public todo: Todo;
-  public checked: boolean;
 
   constructor(private todoService: TodoService) {}
   public remove(): void {

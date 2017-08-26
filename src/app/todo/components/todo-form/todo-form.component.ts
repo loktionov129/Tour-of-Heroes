@@ -4,7 +4,7 @@ import { TodoService } from '../../services';
 @Component({
   selector: 'my-todo-form',
   templateUrl: './todo-form.component.html',
-  styleUrls: ['./todo-form.component.scss']
+  styles: ['md-input-container { width: 77%; }']
 })
 export class TodoFormComponent {
   public title= '';

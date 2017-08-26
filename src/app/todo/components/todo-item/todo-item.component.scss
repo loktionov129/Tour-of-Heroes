@@ -1,10 +1,15 @@
-div:hover .material-icons.delete {
-  opacity: 1;
+div {
+  min-height: 30px;
+
+  &:hover .material-icons.delete {
+    opacity: 1;
+  }
 }
 
 .material-icons.delete {
-  position: relative;
-  top: 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
   cursor: pointer;
   opacity: 0;
   transition: opacity .3s;

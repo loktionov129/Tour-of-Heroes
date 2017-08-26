@@ -1,23 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../models';
 
-const TODOS: Todo[] = [
-  new Todo('Make Home'),
-  new Todo('Create Heroes', true),
-  new Todo('Create Todo', true),
-  new Todo('Make About')
-];
-
 @Injectable()
 export class TodoService {
-  private todos: Todo[] = TODOS;
+  private storeName = 'todoStore';
+  private todos: Todo[] = [];
 
   public add(title: string): void {
     this.todos.push(new Todo(title));
-    console.log('add', this.todos);
+    this.saveTodos();
   }
 
   public getTodos(): Todo[] {
+    this.loadTodos();
     return this.todos;
   }
 
@@ -28,20 +23,33 @@ export class TodoService {
   public remove(todo: Todo): void {
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1);
+    this.saveTodos();
   }
 
   public removeCompleted(): Todo[] {
     this.todos = this.todos.filter((todo: Todo) => !todo.completed);
+    this.saveTodos();
     return this.todos;
   }
 
   public toggle(todo: Todo): void {
     const index = this.todos.indexOf(todo);
     this.todos[index].completed = !this.todos[index].completed;
+    this.saveTodos();
   }
 
   public toggleAll(): void {
     const state = this.haveCompleted();
     this.todos.forEach((todo: Todo) => todo.completed = state);
+    this.saveTodos();
+  }
+
+  private loadTodos(): void {
+    const data = localStorage.getItem(this.storeName);
+    this.todos = JSON.parse(data || '[]');
+  }
+
+  private saveTodos(): void {
+    localStorage.setItem(this.storeName, JSON.stringify(this.todos));
   }
 }

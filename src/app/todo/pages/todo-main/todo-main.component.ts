@@ -5,7 +5,8 @@ import { slideAnimation } from './../../../shared/animations';
   template: `
     <my-todo-form></my-todo-form>
     <my-todo-list></my-todo-list>`,
-  animations: [ slideAnimation ]
+  animations: [ slideAnimation ],
+  styles: [':host { width: 415px; }']
 })
 export class TodoMainComponent {
   @HostBinding('@routeAnimation') public routeAnimation = true;
