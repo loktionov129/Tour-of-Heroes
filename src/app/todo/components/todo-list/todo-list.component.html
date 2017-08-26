@@ -2,4 +2,10 @@
   <my-todo-item *ngFor="let todo of todos" [todo]="todo"></my-todo-item>
   <button md-raised-button (click)="toggleAll();">toggleAll();</button>
   <button md-raised-button (click)="removeCompleted();">removeCompleted();</button>
+  <button md-raised-button (click)="exportTodos();">export();</button>
 </ng-container>
+<br><br>
+<label>
+  import:
+  <input type="file" (change)="importTodos($event);">
+</label>

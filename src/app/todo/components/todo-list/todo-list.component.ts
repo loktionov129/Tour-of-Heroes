@@ -13,6 +13,16 @@ export class TodoListComponent implements OnInit {
 
   public ngOnInit() {
     this.todos = this.todoService.getTodos();
+    console.log(this.todos);
+  }
+
+  public exportTodos(): void {
+    this.todoService.exportTodos();
+  }
+
+  public importTodos(event: Event): void {
+    this.todoService.importTodos(event.target).then((todos: Todo[]) => this.todos = todos)
+      .catch((error) => console.error(error));
   }
 
   public removeCompleted(): void {

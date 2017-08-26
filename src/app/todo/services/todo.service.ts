@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../models';
+import { FileLoader } from '../../shared/helpers';
 
 @Injectable()
 export class TodoService {
@@ -7,8 +8,30 @@ export class TodoService {
   private todos: Todo[] = [];
 
   public add(title: string): void {
-    this.todos.push(new Todo(title));
+    let id = 0;
+    if (this.todos.length > 0) {
+      this.todos.forEach((todo: Todo) => id = todo.id > id ? todo.id : id);
+    }
+    this.todos.push(new Todo(id + 1, title));
     this.saveTodos();
+  }
+
+  public exportTodos(): void {
+    FileLoader.download('todo.json', this.todos);
+  }
+
+  public importTodos(fileInput): Promise<Todo[]> {
+    return FileLoader.readFile(fileInput)
+      .then((data: string) => {
+        try {
+          this.todos = JSON.parse(data);
+          this.saveTodos();
+        } catch (e) {
+          console.error(e);
+        }
+        return this.todos;
+      })
+      .catch((error) => console.error(error));
   }
 
   public getTodos(): Todo[] {
