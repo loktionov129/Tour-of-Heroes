@@ -14,13 +14,26 @@ export class TodoItemComponent {
   @HostBinding('style.display')   public display = 'block';
   @HostBinding('style.position')  public position = 'absolute';
   @Input() public todo: Todo;
+  private editing = false;
 
   constructor(private todoService: TodoService) {}
+
+  public hideInput(): void {
+    if (this.todo.title.trim().length > 2) {
+      this.editing = false;
+      this.todoService.update(this.todo);
+    }
+  }
+
   public remove(): void {
     this.todoService.remove(this.todo);
   }
 
   public toggle(): void {
     this.todoService.toggle(this.todo);
+  }
+
+  public showInput(): void {
+    this.editing = true;
   }
 }

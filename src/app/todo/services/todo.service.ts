@@ -33,7 +33,7 @@ export class TodoService {
   }
 
   public toggle(todo: Todo): void {
-    const index = this.todos.indexOf(todo);
+    const index = this.findById(todo.id);
     this.todos[index].completed = !this.todos[index].completed;
     this.saveTodos();
   }
@@ -42,6 +42,16 @@ export class TodoService {
     const state = this.haveCompleted();
     this.todos.forEach((todo: Todo) => todo.completed = state);
     this.saveTodos();
+  }
+
+  public update(todo: Todo): void {
+    const index = this.findById(todo.id);
+    this.todos[index] = todo;
+    this.saveTodos();
+  }
+
+  private findById(id: number): number {
+    return this.todos.findIndex((todo: Todo) => todo.id === id);
   }
 
   private loadTodos(): void {

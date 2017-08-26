@@ -1,5 +1,16 @@
 <div [@routeAnimation]>
-  <md-checkbox color="primary" [checked]="todo.completed" (click)="toggle();cb.checked=false" #cb></md-checkbox>
-  <span [ngStyle]="{color: todo.completed ? 'grey' : 'black'}">{{todo.title}}</span>
-  <i class="material-icons delete" (click)="remove()"></i>
+  <ng-container [ngSwitch]="editing">
+    <md-input-container *ngSwitchCase="true">
+      <input type="text" name="title" autocomplete="off"
+             placeholder="What's need to do ?" mdInput
+             (keyup.enter)="hideInput()"
+             [(ngModel)]="todo.title" (blur)="hideInput()"
+      >
+    </md-input-container>
+    <ng-container *ngSwitchDefault>
+      <md-checkbox color="primary" [checked]="todo.completed" (click)="toggle();cb.checked=false" #cb></md-checkbox>
+      <span [ngStyle]="{color: todo.completed ? 'grey' : 'black'}" (click)="showInput()">{{todo.title}}</span>
+      <i class="material-icons delete" (click)="remove()"></i>
+    </ng-container>
+  </ng-container>
 </div>
