@@ -1,12 +1,11 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { HeroService } from '../services';
-import { Hero } from '../hero';
+import { Hero } from '../../models';
+import { HeroService } from '../../services';
 
 @Component({
   selector: 'my-hero-form',
   templateUrl: './hero-form.component.html',
-  styleUrls: ['./hero-form.component.scss'],
   animations: [
     trigger(
       'myAnimation',

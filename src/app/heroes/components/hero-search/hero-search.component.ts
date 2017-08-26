@@ -4,16 +4,13 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
-// Observable class extensions
 import 'rxjs/add/observable/of';
-
-// Observable operators
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { Hero } from '../hero';
-import { HeroSearchService } from '../services';
+import { Hero } from '../../models';
+import { HeroSearchService } from '../../services';
 
 @Component({
   selector: 'my-hero-search',

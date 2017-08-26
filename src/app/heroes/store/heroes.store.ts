@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Hero } from '../hero';
+import { Hero } from '../models/hero';
 
 export const CREATE = 'CREATE';
 export const GET_HEROES = 'GET_HEROES';

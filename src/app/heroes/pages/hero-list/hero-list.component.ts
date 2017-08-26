@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
-import { slideAnimation } from './../../shared/animations';
-import { Hero } from '../hero';
-import { HeroService } from '../services';
+import { slideAnimation } from '../../../shared/animations';
+import { Hero } from '../../models';
+import { HeroService } from '../../services';
 
 @Component({
   selector: 'my-hero-list',

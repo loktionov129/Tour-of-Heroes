@@ -3,8 +3,8 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Location } from '@angular/common';
 
-import { Hero } from '../hero';
-import { HeroService } from '../services';
+import { Hero } from '../../models';
+import { HeroService } from '../../services';
 import { ComponentCanDeactivate } from './hero-detail.guard';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/switchMap';
@@ -63,9 +63,7 @@ export class HeroDetailComponent implements OnInit, OnDestroy, ComponentCanDeact
   }
 
   public goBack(): void {
-    console.log('before location.back');
     this.location.back();
-    console.log('location.back');
   }
 
   public save(): void {

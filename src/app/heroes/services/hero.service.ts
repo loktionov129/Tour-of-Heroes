@@ -4,20 +4,14 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-/*import { Store } from '@ngrx/store';
-import { CREATE, GET_HEROES, GET_HERO, REMOVE, UPDATE, SEARCH } from '../store/heroes.store';*/
-import { Hero } from '../hero';
-
-/*interface HeroState {
-  heroes: Hero[];
-}*/
+import { Hero } from '../models/hero';
 
 @Injectable()
 export class HeroService {
   private heroesUrl = 'api/heroes';
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http/*, private store: Store<HeroState>*/) { }
+  constructor(private http: Http) { }
 
   public create(hero: Hero): Promise<Hero> {
     return this.http

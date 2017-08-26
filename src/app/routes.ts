@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 export const ROUTES: Routes = [
   { path: '', loadChildren: 'app/home/#HomeModule', pathMatch: 'full' },
   { path: 'about', loadChildren: 'app/about/about.module#AboutModule' },
-  { path: 'heroes', loadChildren: 'app/heroes/heroes.module#HeroesModule' },
+  { path: 'heroes', loadChildren: 'app/heroes/#HeroesModule' },
   { path: 'todo', loadChildren: 'app/todo/#TodoModule' },
   { path: '**', redirectTo: '/'},
 ];
