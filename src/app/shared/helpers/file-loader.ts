@@ -10,7 +10,7 @@ export class FileLoader {
     element.click();
     document.body.removeChild(element);
   }
-  /* tslint:disable */
+
   public static readFile(fileInput: HTMLElement): Promise<string> {
     if (!window.FileReader || !window.File) {
       return Promise.reject('The File APIs are not fully supported in this browser.');
