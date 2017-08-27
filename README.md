@@ -1,6 +1,6 @@
 # Angular2
 
-## [Demo online](https://loktionov129.github.io/angular2/dist "Demo online")
+## [Demo online](https://loktionov129.github.io/angular2/ "Demo online")
 
 [![observable-service-data-flow](https://coryrylan.com/assets/images/posts/2015-11-17-angular-observable-data-services/observable-service-data-flow.svg)](https://coryrylan.com/assets/images/posts/2015-11-17-angular-observable-data-services/observable-service-data-flow.svg)
 
