@@ -12,7 +12,7 @@ export class FileLoader {
   }
 
   // TODO: FIX THIS TSLINT-ERRORS
-  public static readFile(fileInput: HTMLElement): Promise<string> {
+  public static readFile(fileInput: HTMLInputElement): Promise<string> {
     if (!window.FileReader || !window.File) {
       return Promise.reject('The File APIs are not fully supported in this browser.');
     }
