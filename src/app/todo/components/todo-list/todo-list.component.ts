@@ -8,12 +8,12 @@ import { TodoService } from '../../services';
 })
 export class TodoListComponent implements OnInit {
   public todos: Todo[];
+  public groupId: string = '-1';
 
   constructor(private todoService: TodoService) {}
 
   public ngOnInit() {
     this.todos = this.todoService.getTodos();
-    console.log(this.todos);
   }
 
   public exportTodos(): void {
@@ -26,10 +26,10 @@ export class TodoListComponent implements OnInit {
   }
 
   public removeCompleted(): void {
-    this.todos = this.todoService.removeCompleted();
+    this.todos = this.todoService.removeCompleted(this.groupId);
   }
 
   public toggleAll(): void {
-    this.todoService.toggleAll();
+    this.todoService.toggleAll(this.groupId);
   }
 }

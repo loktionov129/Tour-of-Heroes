@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../models';
+import { GROUPS } from '../mock-data/groups';
 import { FileLoader } from '../../shared/helpers';
 
 @Injectable()
@@ -12,7 +13,10 @@ export class TodoService {
     if (this.todos.length > 0) {
       this.todos.forEach((todo: Todo) => id = todo.id > id ? todo.id : id);
     }
-    this.todos.push(new Todo(id + 1, title));
+
+    // TODO: FIX IT
+    // TODO: group don't be a MAGIC
+    this.todos.push(new Todo(id + 1, title, GROUPS[0]));
     this.saveTodos();
   }
 
@@ -24,7 +28,11 @@ export class TodoService {
     return FileLoader.readFile(fileInput)
       .then((data: string) => {
         try {
-          this.todos = JSON.parse(data);
+          const todos = JSON.parse(data) as Todo[];
+          if (todos.length < 1 || todos[0] instanceof Todo === false) {
+            throw `invalid json data: '${data}'`;
+          }
+          this.todos = todos;
           this.saveTodos();
         } catch (e) {
           console.error(e);
@@ -39,8 +47,12 @@ export class TodoService {
     return this.todos;
   }
 
-  public haveCompleted() {
-    return this.todos.some((todo: Todo) => !todo.completed);
+  public haveUnCompleted(groupId: string): boolean {
+    if (groupId === '-1') {
+      return this.todos.some((todo: Todo) => !todo.completed);
+    }
+
+    return this.todos.some((todo: Todo) => !todo.completed && todo.group.id === groupId);
   }
 
   public remove(todo: Todo): void {
@@ -49,8 +61,12 @@ export class TodoService {
     this.saveTodos();
   }
 
-  public removeCompleted(): Todo[] {
-    this.todos = this.todos.filter((todo: Todo) => !todo.completed);
+  public removeCompleted(groupId: string): Todo[] {
+    if (groupId === '-1') {
+      this.todos = this.todos.filter((todo: Todo) => !todo.completed);
+    } else {
+      this.todos = this.todos.filter((todo: Todo) => todo.group.id === groupId ? !todo.completed : true);
+    }
     this.saveTodos();
     return this.todos;
   }
@@ -61,9 +77,15 @@ export class TodoService {
     this.saveTodos();
   }
 
-  public toggleAll(): void {
-    const state = this.haveCompleted();
-    this.todos.forEach((todo: Todo) => todo.completed = state);
+  public toggleAll(groupId: string): void {
+    const state = this.haveUnCompleted(groupId);
+
+    if (groupId === '-1') {
+      this.todos.forEach((todo: Todo) => todo.completed = state);
+    } else {
+      this.todos.forEach((todo: Todo) => todo.group.id === groupId && (todo.completed = state));
+    }
+
     this.saveTodos();
   }
 
