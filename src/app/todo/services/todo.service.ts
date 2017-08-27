@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/fromPromise';
+
 import { Todo } from '../models';
 import { GROUPS } from '../mock-data/groups';
 import { FileLoader } from '../../shared/helpers';
@@ -24,12 +28,12 @@ export class TodoService {
     FileLoader.download('todo.json', this.todos);
   }
 
-  public importTodos(fileInput): Promise<Todo[]> {
-    return FileLoader.readFile(fileInput)
+  public importTodos(fileInput): Observable<Todo[]> {
+    const promise = FileLoader.readFile(fileInput)
       .then((data: string) => {
         try {
           const todos = JSON.parse(data) as Todo[];
-          if (todos.length < 1 || todos[0] instanceof Todo === false) {
+          if (todos.length < 1) {
             throw `invalid json data: '${data}'`;
           }
           this.todos = todos;
@@ -40,11 +44,12 @@ export class TodoService {
         return this.todos;
       })
       .catch((error) => console.error(error));
+    return Observable.fromPromise(promise);
   }
 
-  public getTodos(): Todo[] {
+  public getTodos(): Observable<Todo[]> {
     this.loadTodos();
-    return this.todos;
+    return Observable.of(this.todos);
   }
 
   public haveUnCompleted(groupId: string): boolean {
@@ -61,14 +66,14 @@ export class TodoService {
     this.saveTodos();
   }
 
-  public removeCompleted(groupId: string): Todo[] {
+  public removeCompleted(groupId: string): Observable<Todo[]> {
     if (groupId === '-1') {
       this.todos = this.todos.filter((todo: Todo) => !todo.completed);
     } else {
       this.todos = this.todos.filter((todo: Todo) => todo.group.id === groupId ? !todo.completed : true);
     }
     this.saveTodos();
-    return this.todos;
+    return Observable.of(this.todos);
   }
 
   public toggle(todo: Todo): void {

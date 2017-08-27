@@ -1,21 +1,21 @@
-<ng-container *ngIf="todos.length">
+<ng-container *ngIf="(todos$ | async)">
   <ng-container *ngIf="groupId == '-1'">
-    <my-todo-item *ngFor="let todo of todos" [todo]="todo"></my-todo-item>
+    <my-todo-item *ngFor="let todo of (todos$ | async)" [todo]="todo"></my-todo-item>
   </ng-container>
   <ng-container *ngIf="groupId != '-1'">
-    <ng-container *ngFor="let todo of todos">
+    <ng-container *ngFor="let todo of (todos$ | async)">
       <my-todo-item *ngIf="todo.group.id == groupId" [todo]="todo"></my-todo-item>
     </ng-container>
   </ng-container>
 
-    <form #typeForm="ngForm">
-      <p>
-        <label><input type="radio" name="type" value="-1" [(ngModel)]="groupId"/>All</label>
-        <label><input type="radio" name="type" value="1"  [(ngModel)]="groupId"/>Home</label>
-        <label><input type="radio" name="type" value="2"  [(ngModel)]="groupId"/>Study</label>
-        <label><input type="radio" name="type" value="3"  [(ngModel)]="groupId"/>Work</label>
-      </p>
-    </form>
+  <form #typeForm="ngForm">
+    <p>
+      <label><input type="radio" name="type" value="-1" [(ngModel)]="groupId"/>All</label>
+      <label><input type="radio" name="type" value="1"  [(ngModel)]="groupId"/>Home</label>
+      <label><input type="radio" name="type" value="2"  [(ngModel)]="groupId"/>Study</label>
+      <label><input type="radio" name="type" value="3"  [(ngModel)]="groupId"/>Work</label>
+    </p>
+  </form>
 
   <button md-raised-button (click)="toggleAll();">toggleAll();</button>
   <button md-raised-button (click)="removeCompleted();">removeCompleted();</button>

@@ -11,19 +11,18 @@ export class FileLoader {
     document.body.removeChild(element);
   }
 
-  // TODO: FIX THIS ERRORS
+  // TODO: FIX THIS TSLINT-ERRORS
   public static readFile(fileInput: HTMLElement): Promise<string> {
     if (!window.FileReader || !window.File) {
       return Promise.reject('The File APIs are not fully supported in this browser.');
     }
 
     const file = fileInput.files[0];
+    if (!file) {
+      return Promise.reject('No File');
+    }
 
     return new Promise((resolve, reject) => {
-      if (!file) {
-        reject('No File');
-      }
-
       const reader = new FileReader();
       reader.onload = ((theFile) => {
         return (e) => {

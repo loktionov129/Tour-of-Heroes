@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
 import { Todo } from '../../models';
 import { TodoService } from '../../services';
 
@@ -7,13 +9,13 @@ import { TodoService } from '../../services';
   templateUrl: './todo-list.component.html'
 })
 export class TodoListComponent implements OnInit {
-  public todos: Todo[];
+  public todos$: Observable<Todo[]>;
   public groupId: string = '-1';
 
   constructor(private todoService: TodoService) {}
 
   public ngOnInit() {
-    this.todos = this.todoService.getTodos();
+    this.todos$ = this.todoService.getTodos().share();
   }
 
   public exportTodos(): void {
@@ -21,12 +23,11 @@ export class TodoListComponent implements OnInit {
   }
 
   public importTodos(event: Event): void {
-    this.todoService.importTodos(event.target).then((todos: Todo[]) => this.todos = todos)
-      .catch((error) => console.error(error));
+    this.todos$ = this.todoService.importTodos(event.target).share();
   }
 
   public removeCompleted(): void {
-    this.todos = this.todoService.removeCompleted(this.groupId);
+    this.todos$ = this.todoService.removeCompleted(this.groupId).share();
   }
 
   public toggleAll(): void {
